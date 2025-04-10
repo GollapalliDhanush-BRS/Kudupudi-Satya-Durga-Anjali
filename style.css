@@ -1,0 +1,764 @@
+:root {
+    --primary-color: #f39c12; /* Amber/Orange accent */
+    --secondary-color: #343a40; /* Dark grey */
+    --light-color: #1e1e1e;   /* Very dark background */
+    --text-color: #e0e0e0;    /* Light grey text */
+    --white-color: #f8f9fa;   /* Off-white */
+    --shadow-color: rgba(243, 156, 18, 0.15); /* Amber shadow */
+    --border-color: #444444;   /* Mid-grey border */
+    --font-main: 'Lato', sans-serif; /* New body font */
+    --font-headings: 'Merriweather', serif; /* New heading font */
+    --transition-speed: 0.3s ease; /* Revert transition */
+}
+
+/* Import Google Fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap');
+
+/* Basic Reset & Body Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.7;
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+/* Container */
+.container {
+    max-width: 1200px; /* Slightly wider */
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px; /* Add padding for spacing */
+}
+
+/* Header Styles */
+header {
+    background: var(--secondary-color);
+    color: var(--white-color);
+    padding: 15px 0; /* Slightly reduced padding */
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); /* Darker shadow for dark theme */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    text-transform: none; /* Keep name capitalization */
+    font-size: 28px;
+    font-family: var(--font-headings);
+    font-weight: 700;
+    min-height: 40px; /* Ensure space for typing */
+}
+
+header nav {
+    margin-top: 0; /* Removed margin-top */
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+    display: flex; /* Use flexbox for nav items */
+}
+
+header li {
+    margin-left: 25px; /* Adjusted spacing */
+}
+
+header a {
+    color: var(--white-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px; /* Slightly smaller */
+    transition: width var(--transition-speed), background-color var(--transition-speed);
+    padding: 5px 0;
+    position: relative;
+    background-color: transparent; /* Ensure no background */
+}
+
+header a::after { /* Underline animation */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed);
+}
+
+header a:hover {
+    color: var(--primary-color); /* Change color on hover */
+}
+
+header a:hover::after {
+    width: 100%;
+}
+
+/* Main Content Area */
+main {
+    padding: 40px 0; /* Increased padding */
+    overflow-x: hidden; /* Prevent horizontal scrollbars during animations */
+}
+
+main section {
+    padding: 40px; /* Consistent padding */
+    margin-bottom: 40px; /* Consistent margin */
+    background: #2a2a2a; /* Slightly lighter dark for sections */
+    border-radius: 8px; /* Slightly more rounded corners */
+    box-shadow: 0 2px 15px var(--shadow-color); /* Softer shadow */
+}
+
+main section h2 {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 12px;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-family: var(--font-headings);
+    display: flex; /* Align icon and text */
+    align-items: center;
+}
+
+main section h2 .icon,
+.contact-details .icon {
+    margin-right: 15px;
+    font-size: 0.9em;
+    /* Add subtle glow */
+    /* text-shadow: 0 0 8px var(--primary-color); */ /* Remove text shadow */
+    transition: text-shadow var(--transition-speed);
+}
+
+main section h2:hover .icon,
+.contact-details li:hover .icon {
+    /* text-shadow: 0 0 15px var(--primary-color); */ /* Remove hover shadow */
+}
+
+main section h3 {
+    color: var(--white-color); /* Change to light color for visibility */
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-family: var(--font-headings);
+}
+
+/* Animation Keyframes */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(3px, 0, 0);
+  }
+}
+
+/* Apply base animation class when section becomes visible */
+main section.visible {
+    animation: slideIn 0.5s ease-in-out forwards; /* Faster, sharper ease */
+}
+
+/* Prepare elements for staggered animations */
+main section li,
+main section article,
+main section .about-columns > div {
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    /* Remove the generic default transform */
+}
+
+/* Set specific initial transform based on parent section's animation class */
+main section.animate-left li,
+main section.animate-left article,
+main section.animate-left .about-columns > div {
+    transform: translateX(-30px);
+}
+
+main section.animate-right li,
+main section.animate-right article,
+main section.animate-right .about-columns > div {
+    transform: translateX(30px);
+}
+
+main section.animate-zoom li,
+main section.animate-zoom article,
+main section.animate-zoom .about-columns > div {
+    transform: scale(0.9);
+}
+
+/* Default initial transform for sections without specific animation classes (uses slideIn) */
+main section:not(.animate-left):not(.animate-right):not(.animate-zoom) li,
+main section:not(.animate-left):not(.animate-right):not(.animate-zoom) article,
+main section:not(.animate-left):not(.animate-right):not(.animate-zoom) .about-columns > div {
+    transform: translateY(15px); 
+}
+
+/* Apply final state when parent section is visible */
+main section.visible li,
+main section.visible article,
+main section.visible .about-columns > div {
+    opacity: 1;
+    transform: none; /* Reset transform to default (translateX(0), translateY(0), scale(1)) */
+    /* The JS applies transition-delay here */
+}
+
+/* Example of using different animations (add classes like 'animate-left' to section elements in HTML) */
+main section.animate-left.visible {
+    animation-name: fadeInLeft; 
+    animation-duration: 0.5s; /* Faster */
+    animation-timing-function: ease-in-out; /* Sharper ease */
+}
+
+main section.animate-right.visible {
+    animation-name: fadeInRight;
+    animation-duration: 0.5s; /* Faster */
+    animation-timing-function: ease-in-out; /* Sharper ease */
+}
+
+main section.animate-zoom.visible {
+    animation-name: zoomIn;
+    animation-duration: 0.4s; /* Faster */
+    animation-timing-function: ease-in-out; /* Sharper ease */
+}
+
+/* Optional: Apply specific animations directly to staggered children if needed */
+/* Example: Make skills zoom in instead of just fading/sliding */
+/* Remove this specific override as it's now handled by the general rules above */
+/*
+#skills.visible .skills-list li {
+     opacity: 0; 
+     transform: scale(0.9);
+     animation: zoomIn 0.4s ease-out forwards; 
+}
+*/
+
+/* Button Hover Effects */
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px; /* More padding */
+    background: var(--primary-color);
+    color: var(--white-color);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 15px;
+    margin-top: 10px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.cta-button:hover {
+    background: var(--secondary-color); /* Use secondary color for hover */
+    border-color: var(--secondary-color);
+    color: var(--white-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.cta-button.secondary:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+}
+
+/* Skills Section Styling */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.skills-list li {
+    background-color: #333; /* Darker background for skills */
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.95em;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.skills-list li:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-color);
+    color: var(--secondary-color); /* Dark text on hover */
+    border-color: var(--primary-color);
+}
+
+.skills-list.other-skills li {
+    background-color: #404040; /* Slightly different dark background for other skills */
+}
+
+/* Projects Section Styling */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-article {
+    background: #333; /* Darker background for project cards */
+    padding: 25px;
+    border-radius: 6px;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Base shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-article:hover {
+    transform: translateY(-5px) rotate(1deg); 
+    box-shadow: 0 10px 25px var(--shadow-color); /* Use new shadow color */
+}
+
+.project-article h3 {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.project-article p {
+    margin-bottom: 20px;
+    flex-grow: 1; /* Allow paragraph to take available space */
+}
+
+.project-tags {
+    margin-top: auto; /* Push tags to the bottom */
+}
+
+.project-tags span {
+    display: inline-block;
+    background-color: var(--border-color); /* Dark background for tags */
+    color: var(--primary-color); /* Accent color for tag text */
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    margin-right: 8px;
+    margin-top: 5px;
+}
+
+/* Education Section */
+#education ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#education li {
+    position: relative;
+    padding-left: 25px; /* Space for icon */
+    margin-bottom: 15px;
+}
+
+#education li::before {
+    content: "🎓"; /* Graduation cap icon */
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--primary-color);
+}
+
+#education .certifications-list li::before {
+    content: "⭐"; /* Star icon for certs */
+}
+
+#education strong {
+    font-weight: 600;
+    color: var(--white-color); /* Change to light color */
+}
+
+/* Contact Section Styling */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.contact-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-details li {
+    margin-bottom: 18px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+}
+
+.contact-details li strong {
+    margin-right: 10px;
+    min-width: 60px; /* Align text */
+    display: inline-block;
+}
+
+.contact-details a {
+    word-break: break-all; /* Prevent long links overflowing */
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color); /* Change to lighter text color */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: #333; /* Dark input background */
+    color: var(--text-color); /* Light text in inputs */
+    font-size: 1em;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--shadow-color);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form button[type="submit"] {
+    width: auto;
+    padding: 12px 30px;
+    cursor: pointer;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 30px 20px; /* Increased padding */
+    margin-top: 30px;
+    color: #ccc; /* Lighter text */
+    background: var(--secondary-color);
+}
+
+/* Responsive */
+@media(max-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    .about-columns {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media(max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+
+    header h1 {
+        margin-bottom: 15px;
+    }
+
+    header ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    header li {
+        margin: 10px 0;
+        margin-left: 0; /* Reset margin */
+    }
+
+    main section h2 {
+        font-size: 1.8em;
+    }
+    
+    main section h3 {
+        font-size: 1.3em;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack projects */
+    }
+
+    .about-columns {
+        grid-template-columns: 1fr; /* Stack about columns */
+    }
+
+    .container {
+        padding: 0 15px; /* Adjust padding */
+    }
+}
+
+/* Typing Cursor Style */
+#typed-name::after {
+    content: '|';
+    display: inline-block;
+    margin-left: 2px;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* About Section Columns */
+.about-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px; /* Spacing between columns */
+    margin-top: 20px;
+}
+
+.about-columns h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.about-columns ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.about-columns li {
+    margin-bottom: 8px;
+}
+
+.about-columns li::before {
+    content: '\2022'; /* Bullet point */
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* --- Resume PDF Styles --- */
+
+/* Hide the PDF-specific section from the normal view */
+#resume-for-pdf {
+    display: none; /* Hide by default */
+    font-family: Arial, sans-serif; /* Basic font stack */
+    color: #333; /* Dark grey text */
+    padding: 20px;
+    background-color: #fff; /* White background for PDF */
+    width: 8.5in; /* Standard letter width */
+    box-sizing: border-box;
+}
+
+.resume-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #dc3545; /* Red bottom border like image */
+}
+
+.resume-container {
+    /* display: flex; */ /* Temporarily commented out for testing */
+}
+
+.resume-column-left {
+    /* width: 35%; */ /* Temporarily commented out */
+    padding: 15px;
+    /* margin-right: 20px; */ /* Temporarily commented out */
+    box-sizing: border-box;
+}
+
+.resume-column-right {
+    /* width: 65%; */ /* Temporarily commented out */
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+#resume-for-pdf h3 {
+    font-size: 14px;
+    color: #dc3545; /* Red headings */
+    margin-top: 15px;
+    margin-bottom: 8px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #dc3545;
+    font-weight: bold;
+}
+
+#resume-for-pdf hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 15px 0;
+}
+
+.resume-contact p {
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.resume-contact i {
+    margin-right: 8px; /* Space for icons */
+    color: #007bff; /* Blue icons */
+}
+
+#resume-for-pdf ul {
+    list-style: none;
+    padding-left: 0; /* Remove default padding */
+    margin: 0;
+}
+
+#resume-for-pdf li {
+    font-size: 12px;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.resume-column-left ul li::before {
+    content: '\2022'; /* Bullet point */
+    color: #333;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-size: 10px; /* Smaller bullet */
+}
+
+#resume-for-pdf p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.resume-project {
+    margin-bottom: 10px;
+}
+
+.resume-project strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+/* Override display:none ONLY during PDF generation */
+@media print {
+  body > *:not(#resume-for-pdf) {
+    display: none; 
+  }
+  #resume-for-pdf {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Utility class for shake on hover */
+.shake-on-hover:hover {
+  animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
